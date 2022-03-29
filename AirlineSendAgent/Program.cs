@@ -1,2 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using AirlineSendAgent.App;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+var host = Host.CreateDefaultBuilder().ConfigureServices((context, services) => 
+{
+    services.AddSingleton<IAppHost, AppHost>();
+}).Build();
+
+host.Services.GetService<IAppHost>()?.Run();
+
