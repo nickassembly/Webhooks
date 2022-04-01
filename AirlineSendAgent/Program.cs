@@ -10,9 +10,9 @@ var host = Host.CreateDefaultBuilder().ConfigureServices((context, services) =>
     services.AddSingleton<IAppHost, AppHost>();
     services.AddDbContext<SendAgentDbContext>(opt => 
     {
-        opt.UseSqlServer(context.Configuration.GetConnectionString("AirlineConnection"));
-        
+        opt.UseSqlServer(context.Configuration.GetConnectionString("AirlineConnection"));      
     });
+    services.AddHttpClient();
 
 }).Build();
 
