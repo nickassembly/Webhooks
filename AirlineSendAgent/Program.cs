@@ -1,4 +1,5 @@
 ﻿using AirlineSendAgent.App;
+using AirlineSendAgent.Client;
 using AirlineSendAgent.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,7 @@ var host = Host.CreateDefaultBuilder().ConfigureServices((context, services) =>
     {
         opt.UseSqlServer(context.Configuration.GetConnectionString("AirlineConnection"));      
     });
+    services.AddSingleton<IWebhookClient, WebhookClient>();
     services.AddHttpClient();
 
 }).Build();
